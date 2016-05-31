@@ -1,0 +1,36 @@
+﻿@model MVCBlog.Website.Models.InputModels.Login.LoginFormInput
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label class="checkbox">
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.DisplayNameFor(m => m.RememberMe)
+        </label>
+    </div>
+    <div class="form-group">
+        @Html.AntiForgeryToken()
+        <input type="submit" value="@Common.Login" class="btn btn-primary"/>
+        @Html.ValidationMessage("login")
+    </div>
+    <div>
+        <a href="javascript:void(0);" onclick="toLogin()"><img src="~/gx/qq/Connect_logo_1.png" /></a>
+    </div>
+}
+
+<script>
+    function toLogin()
+    {
+        //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
+        //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
+        var A = window.location.href = "/Login/RedirectToQQLogin";
+    }
+</script>
