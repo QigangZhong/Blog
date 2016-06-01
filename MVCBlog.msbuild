@@ -1,4 +1,4 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunUnitTests">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="BuildMVCBlog">
   <ItemGroup>
     <OutputDirectory Include="E:\Build" />
     <SolutionFile Include="MVCBlog.sln" />
