@@ -1,0 +1,32 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="RunUnitTests">
+  <ItemGroup>
+    <OutputDirectory Include="E:\Build" />
+    <SolutionFile Include="MVCBlog.sln" />
+    <NUnitConsole Include="C:\Program Files (x86)\NUnit 2.6\bin\nunit-console.exe" />
+    <UnitTestsDLL Include="BuildArtifacts\HelloCI.Web.UnitTests.dll" />
+    <TestResultsPath Include="BuildArtifacts\TestResults.xml" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
+  </PropertyGroup>
+  
+  <Target Name="Clean">
+    <RemoveDir Directories="@(OutputDirectory)" />
+  </Target>
+  
+  <Target Name="Init" DependsOnTargets="Clean">
+    <MakeDir Directories="@(OutputDirectory)" /> 
+  </Target>
+
+  <Target Name="Compile" DependsOnTargets="Init">
+    <MSBuild Projects="@(SolutionFile)"
+             Targets="Rebuild"
+             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform)" />
+  </Target>
+
+  <Target Name="BuildMVCBlog" DependsOnTargets="Compile">
+    <!--<Exec Command='"@(NUnitConsole)" @(UnitTestsDLL) /xml=@(TestResultsPath)' />-->
+  </Target>
+</Project>
