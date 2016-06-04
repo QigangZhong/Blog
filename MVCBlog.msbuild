@@ -1,6 +1,6 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="BuildMVCBlog">
   <ItemGroup>
-    <OutputDirectory Include="E:\Build" />
+    <OutputDirectory Include="E:\MVCBlogBuildOutput" />
     <SolutionFile Include="MVCBlog.sln" />
     <NUnitConsole Include="C:\Program Files (x86)\NUnit 2.6\bin\nunit-console.exe" />
     <UnitTestsDLL Include="BuildArtifacts\HelloCI.Web.UnitTests.dll" />
