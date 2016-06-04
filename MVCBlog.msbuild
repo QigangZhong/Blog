@@ -1,9 +1,17 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="BuildMVCBlog">
   <ItemGroup>
+	<!--编译输出路径-->
     <OutputDirectory Include="E:\MVCBlogBuildOutput" />
+	<!--需要编译的Solution文件-->
     <SolutionFile Include="MVCBlog.sln" />
+	<!--发布配置-->
+	<PublishProfileName Include="FTP.pubxml" />
+	<FTPPassword Include="zqg19881004" />
+	<!--单元测试NUnit的执行程序路径-->
     <NUnitConsole Include="C:\Program Files (x86)\NUnit 2.6\bin\nunit-console.exe" />
+	<!--需要单元测试的程序集-->
     <UnitTestsDLL Include="BuildArtifacts\HelloCI.Web.UnitTests.dll" />
+	<!--单元测试结果的xml文件路径-->
     <TestResultsPath Include="BuildArtifacts\TestResults.xml" />
   </ItemGroup>
 
@@ -23,7 +31,7 @@
   <Target Name="Compile" DependsOnTargets="Init">
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
-             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform)" />
+             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=True;PublishProfile=@(PublishProfileName);Password=@(FTPPassword);" />
   </Target>
 
   <Target Name="BuildMVCBlog" DependsOnTargets="Compile">
