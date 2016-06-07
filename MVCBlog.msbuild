@@ -21,7 +21,7 @@
 	<DeployOnBuild>True</DeployOnBuild>
 	<PublishProfile>FTP.pubxml</PublishProfile>
 	<Password>zqg19881004</Password>
-	<PublishProfileRootFolder>\MVCBlog.Website\Properties\PublishProfiles</PublishProfileRootFolder>
+	<PublishProfileRootFolder>$(MSBuildThisFileDirectory)MVCBlog.Website\Properties\PublishProfiles</PublishProfileRootFolder>
   </PropertyGroup>
   
   <Target Name="Clean">
