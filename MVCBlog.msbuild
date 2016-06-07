@@ -22,6 +22,7 @@
 	<PublishProfile>FTP.pubxml</PublishProfile>
 	<Password>zqg19881004</Password>
 	<PublishProfileRootFolder>$(MSBuildThisFileDirectory)MVCBlog.Website\Properties\PublishProfiles</PublishProfileRootFolder>
+	<VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   
   <Target Name="Clean">
@@ -35,7 +36,7 @@
   <Target Name="Compile" DependsOnTargets="Init">
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
-             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=$(DeployOnBuild);Password=$(Password);VisualStudioVersion=12.0;PublishProfileRootFolder=$(PublishProfileRootFolder); PublishProfile=$(PublishProfile);" />
+             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=$(DeployOnBuild);Password=$(Password);VisualStudioVersion=$(VisualStudioVersion);PublishProfileRootFolder=$(PublishProfileRootFolder); PublishProfile=$(PublishProfile);" />
   </Target>
 
   <Target Name="BuildMVCBlog" DependsOnTargets="Compile">
