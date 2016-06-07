@@ -31,7 +31,7 @@
   <Target Name="Compile" DependsOnTargets="Init">
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
-             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=True;PublishProfile=@(PublishProfileName);Password=@(FTPPassword);" />
+             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=True;PublishProfile=@(PublishProfileName);Password=@(FTPPassword);VisualStudioVersion=12.0;" />
   </Target>
 
   <Target Name="BuildMVCBlog" DependsOnTargets="Compile">
