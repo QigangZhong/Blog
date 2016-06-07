@@ -18,6 +18,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <BuildPlatform Condition=" '$(BuildPlatform)' == '' ">Any CPU</BuildPlatform>
+	<DeployOnBuild>True</DeployOnBuild>
+	<PublishProfile>FTP.pubxml</PublishProfile>
+	<Password>zqg19881004</Password>
   </PropertyGroup>
   
   <Target Name="Clean">
@@ -31,7 +34,7 @@
   <Target Name="Compile" DependsOnTargets="Init">
     <MSBuild Projects="@(SolutionFile)"
              Targets="Rebuild"
-             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=True;PublishProfile=@(PublishProfileName);Password=@(FTPPassword);VisualStudioVersion=12.0;" />
+             Properties="OutDir=%(OutputDirectory.FullPath);Configuration=$(Configuration);Platform=$(BuildPlatform);DeployOnBuild=$(DeployOnBuild);PublishProfile=$(PublishProfile);Password=$(Password);VisualStudioVersion=12.0;" />
   </Target>
 
   <Target Name="BuildMVCBlog" DependsOnTargets="Compile">
